@@ -1,0 +1,68 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #24a2b3;
+    color: white;
+    font-family: sans-serif;
+}
+
+body {
+    background: linear-gradient(#24a2b3, #22d47b);
+}
+
+#header-div {
+    text-align: center;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.selection-button {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    width: 150px;
+    padding: 15px;
+}
+
+.select-paragraph {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#buttons-container {
+    width: 500px;
+    margin: auto;
+}
+
+.player-image {
+    width: 300px;
+    height: auto;
+}
+
+.computer-image {
+    width: 300px;
+    height: auto;
+    transform: scaleX(-1);
+}
+
+#game-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.game-div {
+    display: flex;
+    width: 50%;
+    height: auto;
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+}
+
+img {
+    display: flex;
+}

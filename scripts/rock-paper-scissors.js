@@ -1,6 +1,6 @@
 // ROCK PAPER SCISSORS
 
-let numberOfGames = prompt("How many games would you like to play to?");
+let numberOfGames = 1;
 let playerWins = 0;
 let computerWins = 0;
 
@@ -15,24 +15,24 @@ let computerWins = 0;
     }
 
 */
-while(playerWins < numberOfGames && computerWins < numberOfGames) {
-    let computerChoice = getRandomChoice();
-    let playerChoice;
-    
-    //Ensures the user always has a valid choice
-    while(playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
-        playerChoice = prompt("Do you pick \"rock\", \"paper\", or \"scissors\"?").toLowerCase();
-    }
 
+
+function playGame(playerChoice) {
+    let computerChoice = getRandomChoice();
+        
     computeWinner(playerChoice, computerChoice);
     showCurrentScore();
-
 }
 
-alert(`Thank you for playing! ${(playerWins > computerWins) ? "YOU WON" : "You lost. Better luck next time!"}`);
-
-function showCurrentScore() {
-    alert(`Player wins: ${playerWins} | Computer Wins: ${computerWins}`);
+function getRandomChoice() {
+    let chance = Math.random()
+    let computerChoice = 'rock'
+    if(chance <= 0.33333) {
+        computerChoice = 'paper'
+    } else if(chance <= 0.66666) {
+        computerChoice = 'scissors'
+    }
+    return computerChoice
 }
 
 function computeWinner(playerChoice, computerChoice) {
@@ -76,13 +76,6 @@ function computeWinner(playerChoice, computerChoice) {
     }
 }
 
-function getRandomChoice() {
-    let chance = Math.random()
-    let computerChoice = 'rock'
-    if(chance <= 0.33333) {
-        computerChoice = 'paper'
-    } else if(chance <= 0.66666) {
-        computerChoice = 'scissors'
-    }
-    return computerChoice
+function showCurrentScore() {
+    alert(`Player wins: ${playerWins} | Computer Wins: ${computerWins}`);
 }

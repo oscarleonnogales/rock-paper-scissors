@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
 <body>
+    <div id="header-div">
+        <h1>ROCK - PAPER - SCISSORS</h1>
+    </div>
+
+
     
+    <div id="buttons-container">
+        <p class="select-paragraph">Select your choice</p>
+        <button onclick="playGame('rock')" type="buton" class="selection-button">Rock</button>
+        <button onclick="playGame('paper')" type="buton" class="selection-button">Paper</button>
+        <button onclick="playGame('scissors')" type="buton" class="selection-button">Scissors</button>
+    </div>
+
+    <div id="game-container">
+        <div class="game-div">
+            <div class="image-container">
+                <img src="images/rock.png" alt="Rock" class="player-image">
+            </div>
+        </div>
+        <div class="game-div">
+            <div class="image-container">
+                <img src="images/rock.png" alt="Rock" class="computer-image">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="scripts/rock-paper-scissors.js"></script>
 </body>
 </html>
