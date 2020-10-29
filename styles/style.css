@@ -23,10 +23,16 @@ body {
     text-transform: capitalize;
     width: 150px;
     padding: 15px;
+    border-radius: 6px;
+}
+
+.selection-button:hover {
+    background-color: teal;
+    cursor: pointer;
 }
 
 .select-paragraph {
-    font-size: 2rem;
+    font-size: 2.4rem;
     text-align: center;
 }
 
@@ -35,12 +41,31 @@ body {
     margin: auto;
 }
 
-.player-image {
+#player-image {
     width: 300px;
     height: auto;
 }
 
-.computer-image {
+.bounce {
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: 3;
+    animation-timing-function: ease-out;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-60px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#cpu-image {
     width: 300px;
     height: auto;
     transform: scaleX(-1);
@@ -48,21 +73,38 @@ body {
 
 #game-container {
     display: flex;
-    width: 100%;
-    height: auto;
+    justify-content: space-between;
 }
 
 .game-div {
-    display: flex;
     width: 50%;
     height: auto;
 }
 
 .image-container {
-    width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 400px;
 }
 
-img {
-    display: flex;
+figcaption {
+    font-size: 2rem;
+}
+
+#score-container {
+    text-align: center;
+    font-weight: 600;
+    width: 100px;
+    margin: auto;
+    font-size: 2.4rem;
+    position: absolute;
+    top: 410px;
+    left: 45.5%;
+}
+
+#results {
+    font-size: 4rem;
+    width: 350px;
+    margin: 30px auto;
 }

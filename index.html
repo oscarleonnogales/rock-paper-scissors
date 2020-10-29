@@ -22,16 +22,20 @@
 
     <div id="game-container">
         <div class="game-div">
-            <div class="image-container">
-                <img src="images/rock.png" alt="Rock" class="player-image">
-            </div>
+            <figure class="image-container">
+                <img src="images/rock.png" alt="Rock" id="player-image">
+                <figcaption id="player-caption"></figcaption>
+            </figure>
         </div>
         <div class="game-div">
-            <div class="image-container">
-                <img src="images/rock.png" alt="Rock" class="computer-image">
-            </div>
+            <figure class="image-container">
+                <img src="images/rock.png" alt="Rock" id="cpu-image">
+                <figcaption id="cpu-caption">CPU</figcaption>
+            </figure>
         </div>
     </div>
+    <div id="score-container">0 - 0</div>
+    <div id="results"></div>
 
 
     <script src="scripts/rock-paper-scissors.js"></script>

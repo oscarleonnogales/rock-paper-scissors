@@ -1,27 +1,42 @@
 // ROCK PAPER SCISSORS
 
-let numberOfGames = 1;
 let playerWins = 0;
 let computerWins = 0;
+let playerName = "Player";
 
-/*
-    Get number of games
 
-    while games<numberOfWins for both user and computer {
-      *  randomly get computer (make this a function)
-        ask for user input (make sure it's a good input?)
-        compute winner (make this a function)
-        add up the score (global variables)
+while(true) {
+    playerName = prompt("What is your name?");
+    let confirm = prompt(`\"${playerName}\", is this correct? (yes/no)`);
+
+    if(confirm.toLowerCase() === 'yes' || confirm.toLocaleLowerCase() === 'y') {
+        break;
     }
+}
+setPlayerName();
 
-*/
 
+
+
+
+//Functions to call 
+
+function setPlayerName() {
+    document.getElementById("player-caption").innerHTML = `${playerName}`;
+}
 
 function playGame(playerChoice) {
     let computerChoice = getRandomChoice();
-        
-    computeWinner(playerChoice, computerChoice);
-    showCurrentScore();
+    
+    defaultImages();
+    animateBounce();
+    //need to add a delay here to allow animation to complete
+    setTimeout(function() {
+        changeImages(playerChoice, computerChoice)
+        computeWinner(playerChoice, computerChoice);
+        showCurrentScore();
+        removeBounceClass();
+    }, 3000);
 }
 
 function getRandomChoice() {
@@ -39,35 +54,35 @@ function computeWinner(playerChoice, computerChoice) {
     switch(playerChoice) {
         case 'rock':
             if(computerChoice === 'rock') {
-                alert(`Computer also picks ${computerChoice}, it's a tie!`);
+                showResults('tie');
             } else if(computerChoice === 'paper') {
                 computerWins++;
-                alert(`Computer picks ${computerChoice}, you lose!`);
+                showResults('lose');
             } else { //computerChoice === 'scissors'
                 playerWins++;
-                alert(`Computer picks ${computerChoice}, you win!`);
+                showResults('win');
             }
             break;
         case 'paper':
             if(computerChoice === 'rock') {
                 playerWins++;
-                alert(`Computer picks ${computerChoice}, you win!`);
+                showResults('win');
             } else if(computerChoice === 'paper') {
-                alert(`Computer also picks ${computerChoice}, it's a tie!`);
+                showResults('tie');
             } else { //computerChoice === 'scissors'
                 computerWins++;
-                alert(`Computer picks ${computerChoice}, you lose!`);
+                showResults('lose');
             }
             break;
         case 'scissors':
             if(computerChoice === 'rock') {
                 computerWins++;
-                alert(`Computer picks ${computerChoice}, you lose!`);
+                showResults('lose');
             } else if(computerChoice === 'paper') {
                 playerWins++;
-                alert(`Computer picks ${computerChoice}, you win!`);
+                showResults('win');
             } else { //computerChoice === 'scissors'
-            alert(`Computer also picks ${computerChoice}, it's a tie!`);
+                showResults('tie');
             }
             break;
         default:
@@ -77,5 +92,59 @@ function computeWinner(playerChoice, computerChoice) {
 }
 
 function showCurrentScore() {
-    alert(`Player wins: ${playerWins} | Computer Wins: ${computerWins}`);
+    document.getElementById('score-container').innerHTML = `${playerWins} - ${computerWins}`;
+}
+
+function defaultImages() {
+    document.getElementById('player-image').src = 'images/rock.png';
+    document.getElementById('cpu-image').src = 'images/rock.png';
+    document.getElementById('results').innerHTML = "";
+}
+
+function changeImages(playerChoice, computerChoice) {
+    //change player image
+    switch(playerChoice) {
+        case 'rock':
+            document.getElementById('player-image').src = 'images/rock.png';
+            break;
+        case 'paper':
+            document.getElementById('player-image').src = 'images/paper.png';
+            break;
+        case 'scissors':
+            document.getElementById('player-image').src = 'images/scissors.png';
+            break;
+    }
+
+    //change CPU image
+    switch(computerChoice) {
+        case 'rock':
+            document.getElementById('cpu-image').src = 'images/rock.png';
+            break;
+        case 'paper':
+            document.getElementById('cpu-image').src = 'images/paper.png';
+            break;
+        case 'scissors':
+            document.getElementById('cpu-image').src = 'images/scissors.png';
+            break;
+    }
+}
+
+function showResults(result) {
+    if(result == 'win') {
+        document.getElementById('results').innerHTML = "YOU WIN!";
+    } else if(result == 'lose') {
+        document.getElementById('results').innerHTML = "YOU LOSE!";
+    } else {
+        document.getElementById('results').innerHTML = "IT'S A TIE!"
+    }
+}
+
+function animateBounce() {
+    document.getElementById('player-image').classList.add('bounce');
+    document.getElementById('cpu-image').classList.add('bounce');
+}
+
+function removeBounceClass() {
+    document.getElementById('player-image').classList.remove('bounce');
+    document.getElementById('cpu-image').classList.remove('bounce');
 }
